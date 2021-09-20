@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rose
+  m_Name: Rose_Cosine
   m_Shader: {fileID: -6465566751694194690, guid: 8ee6befda7be5bc4b80a7f28b1fe9819, type: 3}
   m_ShaderKeywords: TYPE_COSINE
   m_LightmapFlags: 4
@@ -90,7 +90,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - A: 1
-    - N: 2
+    - N: 3
     - Power: 1
     - Rotation_Degrees: 0
     - TYPE: 0
