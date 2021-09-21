@@ -15,7 +15,7 @@ void Astroid_float(float2 PolarCoordinates, float Scale, out float Output)
     //
     float secant = rcp(cos(angle));
     float tangent = abs(tan(angle));
-    float d = abs(secant) / pow(1.0 + pow(tangent, 2.0 / 3.0), 3.0 / 2.0);
+    float d = abs(secant) * rcp(pow(1.0 + pow(tangent, 2.0 / 3.0), 3.0 / 2.0));
 
     Output = 1 - step(d * Scale, radius);
 }
