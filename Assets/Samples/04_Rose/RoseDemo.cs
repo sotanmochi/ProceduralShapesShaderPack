@@ -15,8 +15,16 @@ namespace ProceduralShapesShaderPack.Samples
 
         private List<Material> _materials = new List<Material>();
 
+        private int _rotationPropertyId;
+        private int _nPropertyId;
+        private int _powerPropertyId;
+
         void Awake()
         {
+            _rotationPropertyId = Shader.PropertyToID("Rotation_Degrees");
+            _nPropertyId = Shader.PropertyToID("N");
+            _powerPropertyId = Shader.PropertyToID("Power");
+
             foreach (var renderer in _targetShapes)
             {
                 _materials.Add(renderer.material);
@@ -26,7 +34,7 @@ namespace ProceduralShapesShaderPack.Samples
             {
                 foreach (var material in _materials)
                 {
-                    material.SetFloat("Rotation_Degrees", value);
+                    material.SetFloat(_rotationPropertyId, value);
                 }
             });
 
@@ -35,7 +43,7 @@ namespace ProceduralShapesShaderPack.Samples
                 _nText.text = ((int)value).ToString();
                 foreach (var material in _materials)
                 {
-                    material.SetFloat("N", value);
+                    material.SetFloat(_nPropertyId, value);
                 }
             });
 
@@ -44,7 +52,7 @@ namespace ProceduralShapesShaderPack.Samples
                 _powerText.text = value.ToString();
                 foreach (var material in _materials)
                 {
-                    material.SetFloat("Power", value);
+                    material.SetFloat(_powerPropertyId, value);
                 }
             });
         }
