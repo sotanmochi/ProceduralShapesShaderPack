@@ -1,6 +1,6 @@
 {
     "name": "jp.sotanmochi.procedural-shapes-shader-pack",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "displayName": "Procedural Shapes Shader Pack",
     "description": "Procedural Shapes Shader using Unity Shader Graph.",
     "license": "CC0 (Public Domain)",
