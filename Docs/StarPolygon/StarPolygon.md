@@ -1,13 +1,26 @@
 # Star Polygon
 
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    packages: ['base', 'newcommand', 'configMacros']
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+
 ## 極座標を用いた星の描き方について
 極座標における正多角形の公式は以下のように表せる [1, 2]。
 
-<!-- $
+$
 \rho = \frac{\text{cos} \left( \frac{2 \, \text{arcsin} (k) \, + \, \pi m}{2n} \right)}
             {\text{cos} \left( \frac{2 \, \text{arcsin} (k \, \text{cos} \left( n \phi \right)) \, + \, \pi m}{2n} \right)}
 \, \cdots \, (1)
-$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Crho%20%3D%20%5Cfrac%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B2%20%5C%2C%20%5Ctext%7Barcsin%7D%20(k)%20%5C%2C%20%2B%20%5C%2C%20%5Cpi%20m%7D%7B2n%7D%20%5Cright)%7D%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B2%20%5C%2C%20%5Ctext%7Barcsin%7D%20(k%20%5C%2C%20%5Ctext%7Bcos%7D%20%5Cleft(%20n%20%5Cphi%20%5Cright))%20%5C%2C%20%2B%20%5C%2C%20%5Cpi%20m%7D%7B2n%7D%20%5Cright)%7D%0D%0A%5C%2C%20%5Ccdots%20%5C%2C%20(1)">
+$
 
 $\rho$：動径  
 $\phi$：角度  
@@ -17,36 +30,39 @@ $k$：
 
 星型多角形を描くために $k = 1, m = 3$ の場合の式を導出する。
 
-式(1)に $k = 1$ を代入すると、
-<!-- $
+式(1) に $k = 1$ を代入すると、
+
+$
 \rho = \frac{\text{cos} \left( \frac{2 \, \text{arcsin} (1) \, + \, \pi m}{2n} \right)}
             {\text{cos} \left( \frac{2 \, \text{arcsin} (\text{cos} \left( n \phi \right)) \, + \, \pi m}{2n} \right)}
-$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Crho%20%3D%20%5Cfrac%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B2%20%5C%2C%20%5Ctext%7Barcsin%7D%20(1)%20%5C%2C%20%2B%20%5C%2C%20%5Cpi%20m%7D%7B2n%7D%20%5Cright)%7D%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B2%20%5C%2C%20%5Ctext%7Barcsin%7D%20(%5Ctext%7Bcos%7D%20%5Cleft(%20n%20%5Cphi%20%5Cright))%20%5C%2C%20%2B%20%5C%2C%20%5Cpi%20m%7D%7B2n%7D%20%5Cright)%7D">
+$
 
-<!-- $\text{arcsin}(1) = \frac{\pi}{2}, \, \text{arcsin}\, x = \frac{\pi}{2} - \text{arccos}\, x$ より
+$\text{arcsin}(1) = \frac{\pi}{2}, \, \text{arcsin}\, x = \frac{\pi}{2} - \text{arccos}\, x$
+より
+
 $
 \rho = \frac{\text{cos} \left( \frac{\left( m + 1 \right) \, \pi}{2n} \right)}
             {\text{cos} \left( \frac{\left( m + 1 \right) \, \pi}{2n} \, - \, \frac{\text{arccos} \left( \text{cos} \left( n \phi \right) \right)}{n} \right)} 
-$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Ctext%7Barcsin%7D(1)%20%3D%20%5Cfrac%7B%5Cpi%7D%7B2%7D%2C%20%5C%2C%20%5Ctext%7Barcsin%7D%5C%2C%20x%20%3D%20%5Cfrac%7B%5Cpi%7D%7B2%7D%20-%20%5Ctext%7Barccos%7D%5C%2C%20x%24%20%E3%82%88%E3%82%8A%0D%0A%24%0D%0A%5Crho%20%3D%20%5Cfrac%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B%5Cleft(%20m%20%2B%201%20%5Cright)%20%5C%2C%20%5Cpi%7D%7B2n%7D%20%5Cright)%7D%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B%5Cleft(%20m%20%2B%201%20%5Cright)%20%5C%2C%20%5Cpi%7D%7B2n%7D%20%5C%2C%20-%20%5C%2C%20%5Cfrac%7B%5Ctext%7Barccos%7D%20%5Cleft(%20%5Ctext%7Bcos%7D%20%5Cleft(%20n%20%5Cphi%20%5Cright)%20%5Cright)%7D%7Bn%7D%20%5Cright)%7D">
+$
 
 さらに $m = 3$ を代入すると、
-<!-- $
+$
 \rho = \frac{\text{cos} \left( \frac{2 \, \pi}{n} \right)}
             {\text{cos} \left( \frac{2 \, \pi}{n} \, - \, \frac{\text{arccos} \left(\text{cos} \left( n \phi \right) \right)}{n} \right)}
 \, \cdots \, (2)
-$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Crho%20%3D%20%5Cfrac%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B2%20%5C%2C%20%5Cpi%7D%7Bn%7D%20%5Cright)%7D%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B2%20%5C%2C%20%5Cpi%7D%7Bn%7D%20%5C%2C%20-%20%5C%2C%20%5Cfrac%7B%5Ctext%7Barccos%7D%20%5Cleft(%5Ctext%7Bcos%7D%20%5Cleft(%20n%20%5Cphi%20%5Cright)%20%5Cright)%7D%7Bn%7D%20%5Cright)%7D%0D%0A%5C%2C%20%5Ccdots%20%5C%2C%20(2)">
+$
 となる。
 
-式(2)を用いることで、N芒星（$N > 5$）を描くことができる。  
-式(2)は[3]に示されている星型多角形の式を極方程式の形で表したものと等しいことが分かる。
+式(2) を用いることで、N芒星（$N > 5$）を描くことができる。  
+式(2) は[3]に示されている星型多角形の式を極方程式の形で表したものと等しいことが分かる。
 
 また、$k$ の値を変化させる（$0 \le k \le 1$）ことによって、図形の丸みを変化させることができる。  
-$k$ の値を変化させる場合には、式(1)に $m = 3$ のみを代入した以下の式を用いる。
-<!-- $
+$k$ の値を変化させる場合には、式(1) に $m = 3$ のみを代入した以下の式を用いる。
+$
 \rho = \frac{\text{cos} \left( \frac{\text{arcsin} (k)}{n} \, + \, \frac{3 \pi}{2n} \right)}
             {\text{cos} \left( \frac{\text{arcsin} (k \, \text{cos} \left( n \phi \right))}{n} \, + \, \frac{3 \pi}{2n} \right)}
 \, \cdots \, (3)
-$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Crho%20%3D%20%5Cfrac%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B%5Ctext%7Barcsin%7D%20(k)%7D%7Bn%7D%20%5C%2C%20%2B%20%5C%2C%20%5Cfrac%7B3%20%5Cpi%7D%7B2n%7D%20%5Cright)%7D%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%5Ctext%7Bcos%7D%20%5Cleft(%20%5Cfrac%7B%5Ctext%7Barcsin%7D%20(k%20%5C%2C%20%5Ctext%7Bcos%7D%20%5Cleft(%20n%20%5Cphi%20%5Cright))%7D%7Bn%7D%20%5C%2C%20%2B%20%5C%2C%20%5Cfrac%7B3%20%5Cpi%7D%7B2n%7D%20%5Cright)%7D%0D%0A%5C%2C%20%5Ccdots%20%5C%2C%20(3)">
+$
 
 ## 参考文献
 [1] Is there an equation to describe regular polygons? (https://math.stackexchange.com/a/4160104)  
