@@ -6,6 +6,6 @@
     "license": "CC0 (Public Domain)",
     "unity": "2020.3",
     "dependencies": {
-        "com.unity.shadergraph": "10.6.0"
+        "com.unity.render-pipelines.universal": "10.6.0"
     }
 }
