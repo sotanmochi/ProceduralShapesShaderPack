@@ -1,17 +1,5 @@
 # Star Polygon
 
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    packages: ['base', 'newcommand', 'configMacros']
-  },
-  svg: {
-    fontCache: 'global'
-  }
-};
-</script>
 
 ## 極座標を用いた星の描き方について
 極座標における正多角形の公式は以下のように表せる [1, 2]。
@@ -53,7 +41,7 @@ $
 $
 となる。
 
-式(2) を用いることで、N芒星（$N > 5$）を描くことができる。  
+式(2) を用いることで、N芒星（$N \ge 5$）を描くことができる。  
 式(2) は[3]に示されている星型多角形の式を極方程式の形で表したものと等しいことが分かる。
 
 また、$k$ の値を変化させる（$0 \le k \le 1$）ことによって、図形の丸みを変化させることができる。  
